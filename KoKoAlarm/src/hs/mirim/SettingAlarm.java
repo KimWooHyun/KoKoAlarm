@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +16,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class SettingAlarm extends Activity implements OnClickListener{
+	private AlarmManager am;
+	private PendingIntent pIntent;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +29,10 @@ public class SettingAlarm extends Activity implements OnClickListener{
         
         btnOk.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+        
+        am=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent intent=new Intent(this, AlarmReceiver.class);
+        pIntent=PendingIntent.getBroadcast(this, 0, intent, 0);
     }
 	
 	public void onClick(View v) {
