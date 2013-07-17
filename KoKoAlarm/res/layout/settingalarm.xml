@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:orientation="vertical" >
 
     <TimePicker
         android:id="@+id/timePicker"
@@ -11,9 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp" 
-        
-        />
+        android:layout_marginTop="17dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,6 +34,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -46,56 +45,76 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="알람반복" />
-
-        <LinearLayout
+            android:text="알람 반복" />
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <CheckedTextView
-                android:id="@+id/CheckedTextView06"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="일" />
-
-            <CheckedTextView
-                android:id="@+id/CheckedTextView05"
+            <RadioButton
+                android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="월" />
-
-            <CheckedTextView
-                android:id="@+id/CheckedTextView04"
+            
+            <RadioButton
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:text="화" />
-
-            <CheckedTextView
-                android:id="@+id/CheckedTextView03"
+            
+            <RadioButton
+                android:id="@+id/radioButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:text="수" />
-
-            <CheckedTextView
-                android:id="@+id/CheckedTextView02"
+            
+            <RadioButton
+                android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:text="목" />
-
-            <CheckedTextView
-                android:id="@+id/CheckedTextView01"
+            
+            <RadioButton
+                android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:text="금" />
-
-            <CheckedTextView
-                android:id="@+id/checkedTextView1"
+            
+            <RadioButton
+                android:id="@+id/radioButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
                 android:text="토" />
+            
+            <RadioButton
+                android:id="@+id/radioButton7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:text="일" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="16dp"
+        android:text="알람 소리" />
 
 </RelativeLayout>
