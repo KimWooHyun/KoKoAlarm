@@ -7,9 +7,7 @@ import android.util.Log;
 
 public class AlarmReceiver extends BroadcastReceiver {
 	@Override
-	public void onReceive(Context context, Intent arg1) {
-		Log.e("alarm", "alarm!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		
+	public void onReceive(Context context, Intent arg1) {		
 		Intent newIntent=new Intent(context, StartAlarm.class);
 		newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
 				Intent.FLAG_ACTIVITY_CLEAR_TOP |

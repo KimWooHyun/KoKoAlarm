@@ -18,8 +18,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class SettingAlarm extends Activity implements OnClickListener{
-	private AlarmManager am;
-	private PendingIntent pIntent;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,16 +29,13 @@ public class SettingAlarm extends Activity implements OnClickListener{
 
 		btnOk.setOnClickListener(this);
 		btnCancel.setOnClickListener(this);
-
-		am=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
-		Intent intent=new Intent(this, AlarmReceiver.class);
-		pIntent=PendingIntent.getBroadcast(this, 0, intent, 0);
 	}
 
 	public void onClick(View v) {
 		if(v.getId()==R.id.btnOk){
 			TimePicker picker=(TimePicker) findViewById(R.id.timePicker);
-			int hour=picker.getCurrentHour();//사용자가 선택한 ㅅ;긴
+			int hour=picker.getCurrentHour();//사용자가 선택한 시간
+				
 			int minute=picker.getCurrentMinute();//시용자가 선택한 분
 			SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");//이건 출력용
 			String str=format.format(new Date());//현재시간
@@ -51,7 +46,7 @@ public class SettingAlarm extends Activity implements OnClickListener{
 			// Unix Time : 
 			
 			Intent intent1=new Intent();
-			intent1.putExtra("time", "20:27");
+			intent1.putExtra("time", hour+":"+minute);
 			intent1.putExtra("week", "월,수");
 			setResult(RESULT_OK, intent1);
 

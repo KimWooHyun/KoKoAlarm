@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +14,6 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -24,6 +26,10 @@ import android.widget.AdapterView.OnItemClickListener;
 public class AddAlarm extends Activity implements OnClickListener{
 	private List<Alarm> alarms;
 	private CustomArrayAdapter c;
+	
+	private AlarmManager am2;
+	private PendingIntent pIntent;
+	
 	Alarm newAlarm;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,23 +41,6 @@ public class AddAlarm extends Activity implements OnClickListener{
 
 		c=new CustomArrayAdapter(this, android.R.layout.simple_list_item_1, alarms);
 		listView.setAdapter(c);
-		listView.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				Toast.makeText(AddAlarm.this, "aaaa", 3000).show();
-			}
-
-			public void onNothingSelected(AdapterView<?> arg0) {
-
-			}
-		});
-
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View arg1, int position,
-					long arg3) {
-				Toast.makeText(AddAlarm.this, "abbbaaa", 3000).show();
-			}
-		});
 
 		Button btnAdd=(Button)findViewById(R.id.btnAdd);
 		btnAdd.setOnClickListener(this);
@@ -61,6 +50,7 @@ public class AddAlarm extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		Intent intent=new Intent(this, SettingAlarm.class);
 		startActivityForResult(intent, 123);
+		//startActivity(intent);
 	}
 
 	@Override
@@ -70,13 +60,19 @@ public class AddAlarm extends Activity implements OnClickListener{
 			Alarm am = new Alarm(this);
 			am.setContent(timeStr);
 
+			am2=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+	        Intent intent=new Intent(this, AlarmReceiver.class);
+	        pIntent=PendingIntent.getBroadcast(this, 0, intent, 0);
+			
 			newAlarm=new Alarm(this);
 			newAlarm.save();
+			am2.setRepeating(AlarmManager.RTC, System.currentTimeMillis()+5000, 5000, pIntent);
 
 			alarms.add(am);
 			c.notifyDataSetChanged();
 
 			Toast.makeText(this, "TOAST : " + timeStr, Toast.LENGTH_SHORT).show();
+			
 		}
 	}
 
@@ -85,17 +81,4 @@ public class AddAlarm extends Activity implements OnClickListener{
 		c.notifyDataSetChanged();
 
 	}
-	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
-		menu.add(Menu.NONE, 1, Menu.NONE, "ªË¡¶");
-	}
-
-	@Override
-	public boolean onContextItemSelected(MenuItem item) {
-		if(item.getItemId()==1)
-			newAlarm.delete();
-		return false;
-	}
-
 }

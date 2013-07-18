@@ -45,7 +45,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="알람 반복" />
+            android:text="알람 반복" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/radioButton1"
                 android:text="화" />
             
             <RadioButton
@@ -69,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/radioButton2"
                 android:text="수" />
             
             <RadioButton
@@ -77,15 +78,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/radioButton3"
                 android:text="목" />
-            
+
             <RadioButton
                 android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/radioButton4"
                 android:text="금" />
             
             <RadioButton
@@ -93,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/radioButton5"
                 android:text="토" />
             
             <RadioButton
@@ -101,9 +102,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/radioButton6"
                 android:text="일" />
-
+            
         </RelativeLayout>
 
     </LinearLayout>

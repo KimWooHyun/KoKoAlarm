@@ -2,6 +2,7 @@ package hs.mirim;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class StartAlarm extends Activity{
+	private AlarmManager am;
+	private PendingIntent pIntent;
+	
 	ViewGroup.MarginLayoutParams margin;
 	int count = 1;
 	
@@ -41,8 +45,10 @@ public class StartAlarm extends Activity{
 					RandomState();
 					button.setLayoutParams(new LinearLayout.LayoutParams(margin));
 					button.invalidate();
+					
 					count++;
 				}
+				//am.cancel(pIntent);
 			}
 		});
         
