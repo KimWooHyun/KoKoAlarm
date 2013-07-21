@@ -13,7 +13,8 @@
         <TextView
             android:id="@+id/Text1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text=" "/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -42,18 +43,13 @@
             android:layout_height="wrap_content"
             android:text="" />
 
-        <ToggleButton
-            android:id="@+id/toggleButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"/>
-
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:text="삭제" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

@@ -5,18 +5,22 @@ import android.content.Context;
 import com.orm.SugarRecord;
 
 public class Alarm extends SugarRecord<Alarm>{
-	private String time;
-	
+	private int hour;
+	private int minute;
 	public Alarm(Context context){
 		super(context);
 
 	}
 	
-	public String getContent() {
-		return time;
+	public int getHour() {
+		return hour;
 	}
-	public void setContent(String content) {
-		this.time = content;
+	public int getMinute() {
+		return minute;
+	}
+	public void setContent(String h,String m) {
+		this.hour = Integer.parseInt(h);
+		this.minute = Integer.parseInt(m);
 	}
 	
 }
