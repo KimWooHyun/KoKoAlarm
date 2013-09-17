@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +29,7 @@ public class AddAlarm extends Activity implements OnClickListener{
 	private List<Alarm> alarms;
 	private CustomArrayAdapter c;
 	
-	//TextView Text1;
+	TextView Text1;
 	
 	Alarm newAlarm;
 	@Override
@@ -36,7 +37,7 @@ public class AddAlarm extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addalarm);
 
-		//Text1=(TextView)findViewById(R.id.Text1);
+		Text1=(TextView)findViewById(R.id.Text1);
 		
 		alarms=Alarm.listAll(Alarm.class);        
 		ListView listView=(ListView)findViewById(R.id.listView1);
@@ -58,13 +59,11 @@ public class AddAlarm extends Activity implements OnClickListener{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(resultCode==RESULT_OK){
 			Alarm am = new Alarm(this);
+			
 			am.setContent(data.getExtras().getString("hour"),(data.getExtras().getString("minute")));
 	        am.save();
 	        
 			alarms.add(am);
-			
-			//Text1.setText(am.getHour()+" : "+am.getMinute());
-			
 			c.notifyDataSetChanged();
 			
 		}
